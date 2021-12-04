@@ -12,5 +12,10 @@ public struct User {
     var email: String
     var password: String
 
-    func foo() {}
+    var weight: Int
+    var height: Int
+    var sexIsMale: Bool
+
+    var workout: Workout
+    var previousWorkouts: [Workout]
 }

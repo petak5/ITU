@@ -20,6 +20,9 @@
 		D051D81F275BB5AE00D82C59 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D81E275BB5AE00D82C59 /* WorkoutView.swift */; };
 		D051D821275BB5B900D82C59 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D820275BB5B900D82C59 /* ScheduleView.swift */; };
 		D051D823275BB5C300D82C59 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D822275BB5C300D82C59 /* ProfileView.swift */; };
+		D051D825275BCFEA00D82C59 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D824275BCFEA00D82C59 /* Exercise.swift */; };
+		D051D827275BCFF400D82C59 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D826275BCFF400D82C59 /* Workout.swift */; };
+		D051D829275BD36000D82C59 /* AvailableExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D828275BD36000D82C59 /* AvailableExercises.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		D051D81E275BB5AE00D82C59 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D051D820275BB5B900D82C59 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		D051D822275BB5C300D82C59 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D051D824275BCFEA00D82C59 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		D051D826275BCFF400D82C59 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		D051D828275BD36000D82C59 /* AvailableExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableExercises.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				D051D812275BB55000D82C59 /* User.swift */,
+				D051D824275BCFEA00D82C59 /* Exercise.swift */,
+				D051D826275BCFF400D82C59 /* Workout.swift */,
+				D051D828275BD36000D82C59 /* AvailableExercises.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,8 +192,11 @@
 				D051D81D275BB5A300D82C59 /* ExerciseView.swift in Sources */,
 				D051D81B275BB59200D82C59 /* HistoryView.swift in Sources */,
 				D051D805275BB40600D82C59 /* ContentView.swift in Sources */,
+				D051D829275BD36000D82C59 /* AvailableExercises.swift in Sources */,
+				D051D827275BCFF400D82C59 /* Workout.swift in Sources */,
 				D051D819275BB58800D82C59 /* MainView.swift in Sources */,
 				D051D81F275BB5AE00D82C59 /* WorkoutView.swift in Sources */,
+				D051D825275BCFEA00D82C59 /* Exercise.swift in Sources */,
 				D051D821275BB5B900D82C59 /* ScheduleView.swift in Sources */,
 				D051D817275BB57D00D82C59 /* RegisterView.swift in Sources */,
 				D051D803275BB40600D82C59 /* ITUApp.swift in Sources */,

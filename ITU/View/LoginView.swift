@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var username: String = ""
-    @State var password: String = ""
+    @State var username = ""
+    @State var password = ""
+    @State var showIncorrectLoginAlert = false
 
     @Binding var loggedIn: Bool
     @Binding var showLogin: Bool
@@ -33,10 +34,24 @@ struct LoginView: View {
                 .textFieldStyle(.roundedBorder)
 
             Button("Login") {
-                withAnimation(.interactiveSpring()) {
-                    loggedIn = true
+                if password == "heslo" {
+                    withAnimation(.interactiveSpring()) {
+                        loggedIn = true
+                    }
+                } else {
+                    showIncorrectLoginAlert = true
                 }
-            }.padding()
+            }
+            .padding()
+            .alert(isPresented: $showIncorrectLoginAlert) {
+                Alert (
+                    title: Text("Incorrect login"),
+                    message: nil,
+                    dismissButton: .default(Text("Ok")) {
+                        showIncorrectLoginAlert = false
+                    }
+                )
+            }
 
             HStack {
                 Text("Don't have an account?")
