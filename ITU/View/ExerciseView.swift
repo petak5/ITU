@@ -19,7 +19,7 @@ struct ExerciseView: View {
                             NavigationLink(e.name, destination: ExerciseDetailView(exercise: e))
                         }
                         .onDelete { indexSet in
-                            for i in indexSet.makeIterator() {
+                            for i in indexSet.makeIterator().reversed() {
                                 availableExercises.exercises.remove(at: i)
                             }
                         }
@@ -45,6 +45,7 @@ struct ExerciseView_Previews: PreviewProvider {
 
 struct ExerciseAddView: View {
     @State var name = ""
+    @State var showNameAlreadyTakenAlert = false
 
     @Environment(\.presentationMode) var pm
 
@@ -55,9 +56,21 @@ struct ExerciseAddView: View {
             }
 
             Button("Add") {
-                AvailableExercises.shared.exercises.append(Exercise(name: name))
-
-                pm.wrappedValue.dismiss()
+                if (AvailableExercises.shared.exercises.contains(where: { e in e.name == name })) {
+                    showNameAlreadyTakenAlert = true
+                } else {
+                    AvailableExercises.shared.exercises.append(Exercise(name: name))
+                    pm.wrappedValue.dismiss()
+                }
+            }
+            .alert(isPresented: $showNameAlreadyTakenAlert) {
+                Alert(
+                    title: Text("Exercise already exists"),
+                    message: Text("Exercise named \(name) already exists, please pick a different name."),
+                    dismissButton: .default(Text("Ok")) {
+                        showNameAlreadyTakenAlert = false
+                    }
+                )
             }
         }
     }
@@ -72,6 +85,13 @@ struct ExerciseDetailView: View {
                 HStack {
                     Text("Name: ")
                     TextField("Name", text: $exercise.name)
+                        .onDisappear {
+                            AvailableExercises.shared.objectWillChange.send()
+                        }
+                }
+                HStack {
+                    Text("Description: ")
+                    TextField("Description", text: $exercise.description)
                         .onDisappear {
                             AvailableExercises.shared.objectWillChange.send()
                         }

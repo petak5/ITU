@@ -15,8 +15,24 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             Form {
-                Text("Profile content")
-                
+                HStack {
+                    Text("Username"); Spacer(); Text(User.shared.username)
+                }
+
+                HStack {
+                    Text("Email"); Spacer(); Text(User.shared.email)
+                }
+
+                Section {
+                    HStack {
+                        Text("Height"); Spacer(); Text("\(User.shared.height)")
+                    }
+
+                    HStack {
+                        Text("Weight"); Spacer(); Text("\(User.shared.weight)")
+                    }
+                }
+
                 Section {
                     Button("Sign Out") {
                         showSignOutAlert = true

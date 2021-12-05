@@ -11,8 +11,14 @@ class Exercise: Identifiable, ObservableObject {
     var id: String { name }
 
     @Published var name: String
+    @Published var description: String
 
-    init(name: String) {
+    convenience init(name: String) {
+        self.init(name: name, description: "Description of " + name)
+    }
+
+    init(name: String, description: String) {
         self.name = name
+        self.description = description
     }
 }

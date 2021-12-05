@@ -23,6 +23,8 @@
 		D051D825275BCFEA00D82C59 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D824275BCFEA00D82C59 /* Exercise.swift */; };
 		D051D827275BCFF400D82C59 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D826275BCFF400D82C59 /* Workout.swift */; };
 		D051D829275BD36000D82C59 /* AvailableExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D828275BD36000D82C59 /* AvailableExercises.swift */; };
+		D051D82B275C031100D82C59 /* WorkoutTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D82A275C031100D82C59 /* WorkoutTemplates.swift */; };
+		D051D82D275C374A00D82C59 /* WorkoutSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D82C275C374A00D82C59 /* WorkoutSessionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		D051D824275BCFEA00D82C59 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		D051D826275BCFF400D82C59 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D051D828275BD36000D82C59 /* AvailableExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableExercises.swift; sourceTree = "<group>"; };
+		D051D82A275C031100D82C59 /* WorkoutTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplates.swift; sourceTree = "<group>"; };
+		D051D82C275C374A00D82C59 /* WorkoutSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				D051D824275BCFEA00D82C59 /* Exercise.swift */,
 				D051D826275BCFF400D82C59 /* Workout.swift */,
 				D051D828275BD36000D82C59 /* AvailableExercises.swift */,
+				D051D82A275C031100D82C59 /* WorkoutTemplates.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 				D051D81E275BB5AE00D82C59 /* WorkoutView.swift */,
 				D051D820275BB5B900D82C59 /* ScheduleView.swift */,
 				D051D822275BB5C300D82C59 /* ProfileView.swift */,
+				D051D82C275C374A00D82C59 /* WorkoutSessionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			files = (
 				D051D81D275BB5A300D82C59 /* ExerciseView.swift in Sources */,
 				D051D81B275BB59200D82C59 /* HistoryView.swift in Sources */,
+				D051D82B275C031100D82C59 /* WorkoutTemplates.swift in Sources */,
 				D051D805275BB40600D82C59 /* ContentView.swift in Sources */,
 				D051D829275BD36000D82C59 /* AvailableExercises.swift in Sources */,
 				D051D827275BCFF400D82C59 /* Workout.swift in Sources */,
@@ -202,6 +209,7 @@
 				D051D803275BB40600D82C59 /* ITUApp.swift in Sources */,
 				D051D815275BB57500D82C59 /* LoginView.swift in Sources */,
 				D051D823275BB5C300D82C59 /* ProfileView.swift in Sources */,
+				D051D82D275C374A00D82C59 /* WorkoutSessionView.swift in Sources */,
 				D051D813275BB55000D82C59 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

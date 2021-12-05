@@ -18,6 +18,7 @@ struct ITUApp: App {
                             createDummyData()
                         }
                     }
+//                    createDummyData()
                 }
         }
     }
@@ -41,5 +42,17 @@ struct ITUApp: App {
             Exercise(name: "Running")
         ]
         AvailableExercises.shared.exercises.append(contentsOf: exercises)
+
+        let workouts = [
+            Workout(name: "Leg day", exercises: [exercises[0], exercises[2], exercises[5]]),
+            Workout(name: "Cardio", exercises: [exercises[4], exercises[5], exercises[7]])
+        ]
+        WorkoutTemplates.shared.workouts.append(contentsOf: workouts)
+        WorkoutTemplates.shared.objectWillChange.send()
+
+        User.shared.previousWorkouts = [
+            Workout(name: "Cardio", exercises: [exercises[4], exercises[5], exercises[7], exercises[3]]),
+            Workout(name: "Running", exercises: [exercises[1], exercises[2], exercises[3], exercises[1]])
+        ]
     }
 }

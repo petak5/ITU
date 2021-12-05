@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @ObservedObject var user = User.shared
+
     var body: some View {
         NavigationView {
             Form {
                 Section("Previous Workouts") {
                     List {
-                        ForEach((1...15), id:\.self) { i in
-                            HStack {
-                                Text("Workout \(i)")
-                                Spacer()
-                                Button(action: {}) {
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.blue)
-                                }
+                        ForEach(user.previousWorkouts) { w in
+                            NavigationLink(destination: HistoryWorkoutDetailView(workout: w)) {
+                                Text(w.name)
                             }
                         }
                         .onDelete { indexSet in
-                            // TODO
+                            for i in indexSet.makeIterator().reversed() {
+                                user.previousWorkouts.remove(at: i)
+                            }
                         }
                     }
                 }
@@ -38,5 +37,33 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryView()
+    }
+}
+
+struct HistoryWorkoutDetailView: View {
+    @State var workout: Workout
+
+    var body: some View {
+        Form {
+            Section {
+                Text("Gone, reduced to atoms.")
+            }
+
+            HStack {
+                Button("Use as template") {
+                    User.shared.currentWorkout = workout.copy()
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .padding(.top, 6)
+            .padding(.bottom, 6)
+
+            NavigationLink(destination: WorkoutSessionView()) {
+                Button("Start workout") {
+                    
+                }
+            }
+        }
     }
 }
