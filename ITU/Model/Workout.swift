@@ -25,7 +25,7 @@ class Workout: Identifiable, Equatable, ObservableObject {
         var temp: [WorkoutExercise] = []
 
         for e in exercises {
-            temp.append(WorkoutExercise(e, 1))
+            temp.append(WorkoutExercise(e, 5))
         }
 
         self.init(name: name, exercises: temp)
