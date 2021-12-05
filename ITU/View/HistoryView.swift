@@ -79,7 +79,7 @@ struct HistoryWorkoutDetailView: View {
                 }
             }
             .sheet(isPresented: $showSheet) {
-                WorkoutSessionView(workout: workout, index: 0)
+                WorkoutSessionView(workout: workout, index: 0, isPresented: $showSheet)
             }
             .disabled(workout.exercises.count == 0)
         }

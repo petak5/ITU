@@ -63,7 +63,7 @@ struct WorkoutView: View {
                     }
                 }
                 .sheet(isPresented: $showSheet) {
-                    WorkoutSessionView(workout: user.currentWorkout, index: 0)
+                    WorkoutSessionView(workout: user.currentWorkout, index: 0, isPresented: $showSheet)
                 }
                 .disabled(user.currentWorkout.exercises.count == 0)
             }
