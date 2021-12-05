@@ -20,7 +20,7 @@ class User: Identifiable, ObservableObject {
     @Published var height: Int
     @Published var sexIsMale: Bool
 
-    @Published var currentWorkout: Workout = Workout(name: "")
+    @Published var currentWorkout: Workout = Workout(name: "A workout")
     @Published var previousWorkouts: [Workout] = []
 
     convenience init() {

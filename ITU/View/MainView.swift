@@ -16,7 +16,7 @@ struct MainView: View {
         TabView(selection: $selection) {
 
             // MARK: - History
-            HistoryView()
+            HistoryView(selectedTab: $selection)
                 .tabItem {
                     Label("History", systemImage: "clock")
                 }

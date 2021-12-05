@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct WorkoutView: View {
     @State var templateSelection = 0
     @State var isEditable = false
+    @State var showSheet = false
 
     @ObservedObject var workoutTemplates = WorkoutTemplates.shared
     @ObservedObject var user = User.shared
@@ -29,10 +31,18 @@ struct WorkoutView: View {
                     }
                 }
 
+                Section("Name") {
+                    TextField("Name", text: $user.currentWorkout.name)
+                }
+
                 Section("Exercises") {
                     List {
                         ForEach(user.currentWorkout.exercises) { e in
-                            Text(e.name)
+                            HStack {
+                                Text(e.exercise.name)
+                                Spacer()
+                                Text("\(e.count)" + (e.exercise.unit == .Repetitions ? "x" : "m"))
+                            }
                         }
                         .onDelete { indexSet in
                             for i in indexSet.makeIterator().reversed() {
@@ -47,15 +57,22 @@ struct WorkoutView: View {
                         }
                     }
                 }
-
                 Section {
-                    Button("Start", action: {})
+                    Button("Start") {
+                        showSheet.toggle()
+                    }
                 }
+                .sheet(isPresented: $showSheet) {
+                    WorkoutSessionView(workout: user.currentWorkout, index: 0)
+                }
+                .disabled(user.currentWorkout.exercises.count == 0)
             }
             .navigationTitle("Workout")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                EditButton()
+                if user.currentWorkout.exercises.count > 0 {
+                    EditButton()
+                }
             }
         }
     }
@@ -74,6 +91,9 @@ struct WorkoutView_Previews: PreviewProvider {
 
 struct WorkoutExerciseAddView: View {
     @State var selectedExercise = 0
+    @State var count = "1"
+
+    @ObservedObject var availableExercises = AvailableExercises.shared
 
     @Environment(\.presentationMode) var pm
 
@@ -88,13 +108,38 @@ struct WorkoutExerciseAddView: View {
                 .pickerStyle(.wheel)
             }
 
+            Section {
+                HStack {
+                    if availableExercises.exercises[selectedExercise].unit == .Repetitions {
+                        Text("Repetitions:")
+                    } else {
+                        Text("Duration (m):")
+                    }
+
+                    TextField("", text: $count)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(count)) { newValue in
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                self.count = filtered
+                            }
+                    }
+                }
+            }
+
         }
         .toolbar {
             Button("Add") {
-                User.shared.currentWorkout.exercises.append(AvailableExercises.shared.exercises[selectedExercise])
+                User.shared.currentWorkout.exercises.append(WorkoutExercise(AvailableExercises.shared.exercises[selectedExercise], Int(count) ?? 1))
                 User.shared.objectWillChange.send()
                 pm.wrappedValue.dismiss()
             }
         }
+    }
+}
+
+struct WorkoutExerciseDetailView: View {
+    var body: some View {
+        Text("")
     }
 }

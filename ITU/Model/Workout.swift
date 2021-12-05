@@ -15,13 +15,23 @@ class Workout: Identifiable, Equatable, ObservableObject {
     var id: String { name }
 
     @Published var name: String
-    @Published var exercises: [Exercise]
+    @Published var exercises: [WorkoutExercise]
 
     convenience init(name: String) {
         self.init(name: name, exercises: [])
     }
 
-    init(name: String, exercises: [Exercise]) {
+    convenience init(name: String, fromExercises exercises: [Exercise]) {
+        var temp: [WorkoutExercise] = []
+
+        for e in exercises {
+            temp.append(WorkoutExercise(e, 1))
+        }
+
+        self.init(name: name, exercises: temp)
+    }
+
+    init(name: String, exercises: [WorkoutExercise]) {
         self.name = name
         self.exercises = exercises
     }

@@ -24,8 +24,9 @@ struct ITUApp: App {
     }
 
     func createDummyData() {
-        
+
         let exercises = [
+            Exercise(name: "Pause", description: "Take a break", unit: .Time),
             Exercise(name: "Bench press"),
             Exercise(name: "Pull up"),
             Exercise(name: "Push up"),
@@ -44,15 +45,15 @@ struct ITUApp: App {
         AvailableExercises.shared.exercises.append(contentsOf: exercises)
 
         let workouts = [
-            Workout(name: "Leg day", exercises: [exercises[0], exercises[2], exercises[5]]),
-            Workout(name: "Cardio", exercises: [exercises[4], exercises[5], exercises[7]])
+            Workout(name: "Leg day", fromExercises: [exercises[0], exercises[2], exercises[5]]),
+            Workout(name: "Cardio", fromExercises: [exercises[4], exercises[5], exercises[7]])
         ]
         WorkoutTemplates.shared.workouts.append(contentsOf: workouts)
         WorkoutTemplates.shared.objectWillChange.send()
 
         User.shared.previousWorkouts = [
-            Workout(name: "Cardio", exercises: [exercises[4], exercises[5], exercises[7], exercises[3]]),
-            Workout(name: "Running", exercises: [exercises[1], exercises[2], exercises[3], exercises[1]])
+            Workout(name: "Cardio", fromExercises: [exercises[4], exercises[5], exercises[7], exercises[3]]),
+            Workout(name: "Running", fromExercises: [exercises[1], exercises[2], exercises[3], exercises[1]])
         ]
     }
 }

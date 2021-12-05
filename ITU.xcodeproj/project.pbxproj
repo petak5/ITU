@@ -25,6 +25,7 @@
 		D051D829275BD36000D82C59 /* AvailableExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D828275BD36000D82C59 /* AvailableExercises.swift */; };
 		D051D82B275C031100D82C59 /* WorkoutTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D82A275C031100D82C59 /* WorkoutTemplates.swift */; };
 		D051D82D275C374A00D82C59 /* WorkoutSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D82C275C374A00D82C59 /* WorkoutSessionView.swift */; };
+		D051D82F275CDAAF00D82C59 /* WorkoutExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051D82E275CDAAF00D82C59 /* WorkoutExercise.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D051D828275BD36000D82C59 /* AvailableExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableExercises.swift; sourceTree = "<group>"; };
 		D051D82A275C031100D82C59 /* WorkoutTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplates.swift; sourceTree = "<group>"; };
 		D051D82C275C374A00D82C59 /* WorkoutSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionView.swift; sourceTree = "<group>"; };
+		D051D82E275CDAAF00D82C59 /* WorkoutExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExercise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D051D826275BCFF400D82C59 /* Workout.swift */,
 				D051D828275BD36000D82C59 /* AvailableExercises.swift */,
 				D051D82A275C031100D82C59 /* WorkoutTemplates.swift */,
+				D051D82E275CDAAF00D82C59 /* WorkoutExercise.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				D051D815275BB57500D82C59 /* LoginView.swift in Sources */,
 				D051D823275BB5C300D82C59 /* ProfileView.swift in Sources */,
 				D051D82D275C374A00D82C59 /* WorkoutSessionView.swift in Sources */,
+				D051D82F275CDAAF00D82C59 /* WorkoutExercise.swift in Sources */,
 				D051D813275BB55000D82C59 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

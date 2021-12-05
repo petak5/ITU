@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ExerciseView: View {
     @ObservedObject var availableExercises = AvailableExercises.shared
@@ -45,6 +46,9 @@ struct ExerciseView_Previews: PreviewProvider {
 
 struct ExerciseAddView: View {
     @State var name = ""
+    @State var description = ""
+    @State var selectedUnit = Unit.Repetitions
+    @State var count = "1"
     @State var showNameAlreadyTakenAlert = false
 
     @Environment(\.presentationMode) var pm
@@ -53,13 +57,23 @@ struct ExerciseAddView: View {
         Form {
             Section {
                 TextField("Name", text: $name)
+                TextField("Description", text: $description)
+            }
+
+            Section("Unit") {
+                Picker("Unit", selection: $selectedUnit) {
+                    ForEach(Unit.allCases) { u in
+                        Text(u.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
             }
 
             Button("Add") {
                 if (AvailableExercises.shared.exercises.contains(where: { e in e.name == name })) {
                     showNameAlreadyTakenAlert = true
                 } else {
-                    AvailableExercises.shared.exercises.append(Exercise(name: name))
+                    AvailableExercises.shared.exercises.append(Exercise(name: name, description: description, unit: selectedUnit))
                     pm.wrappedValue.dismiss()
                 }
             }
@@ -96,6 +110,15 @@ struct ExerciseDetailView: View {
                             AvailableExercises.shared.objectWillChange.send()
                         }
                 }
+            }
+
+            Section("Unit") {
+                Picker("Unit", selection: $exercise.unit) {
+                    ForEach(Unit.allCases) { u in
+                        Text(u.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
             }
         }
     }
