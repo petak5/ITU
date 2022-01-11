@@ -62,8 +62,10 @@ struct WorkoutSessionExerciseView: View {
     @Binding var done: Bool
 
     @State var timerProgress = 0.0
-    let timerStart = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var remainingSeconds = 0
+    @State var timerProgressText = ""
+    @State var timerRunning = true
 
     var body: some View {
         Form {
@@ -79,20 +81,54 @@ struct WorkoutSessionExerciseView: View {
                     Text("\(workout.exercises[index].count)x")
                 }
             } else {
-                Section("Timer") {
+                Section("Timer - \(timerProgressText)") {
                     ProgressView(value: timerProgress, total: 100)
                         .onReceive(timer) { _ in
+                            if !timerRunning {
+                                return
+                            }
+
+                            if timerProgress == 0 {
+                                remainingSeconds = workout.exercises[index].count * 60
+                            }
+
                             if timerProgress < 100 {
-                                timerProgress = 100 * Date().timeIntervalSince(timerStart) / Double(workout.exercises[index].count * 60)
+                                remainingSeconds -= 1
+
+                                let minutes = remainingSeconds / 60
+                                let seconds = remainingSeconds % 60
+                                timerProgressText = "\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
+
+                                // Update progress bar
+                                timerProgress = 100 * (1.0 - Double(remainingSeconds) / Double(workout.exercises[index].count * 60))
+                                if timerProgress >= 100 {
+                                    timerProgress = 100
+                                    timerProgressText = "Done"
+                                }
                             }
                         }
-                    Button("Pause") {}
-                    Button("Stop") {}
+                    if timerRunning == true {
+                        Button("Pause") {
+                            timerRunning = false
+                            timerProgressText += " (Paused)"
+                        }.disabled(remainingSeconds == 0)
+                    } else {
+                        Button("Resume") {
+                            timerRunning = true
+                            
+                            // Remove " (Paused)" from the text so that it seems responsive
+                            let my_index = timerProgressText.index(timerProgressText.startIndex, offsetBy: timerProgressText.count - " (Paused)".count)
+                            timerProgressText = String(timerProgressText[..<my_index])
+                        }
+                    }
                 }
             }
 
             Section {
                 Button("Next") {
+                    timerProgress = 0
+                    timerProgressText = ""
+
                     if index == workout.exercises.count - 1 {
                         done = true
                     } else {
